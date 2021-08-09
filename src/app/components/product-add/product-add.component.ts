@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ProductAddComponent implements OnInit {
   submitted: Boolean = false;
 
   constructor(private fb: FormBuilder,
+    private router: Router,
     private productService: ProductsService) { }
 
   ngOnInit(): void {
@@ -34,6 +36,9 @@ export class ProductAddComponent implements OnInit {
         }
       );
     console.log("enrister")
+  }
+  hundleClickBack() {
+    this.router.navigate(['/products']);
   }
 
 }

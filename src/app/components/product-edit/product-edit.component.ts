@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class ProductEditComponent implements OnInit {
   productId!: number;
   submitted: boolean = false;
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductsService,
     private fb: FormBuilder) {
     this.productId = route.snapshot.params.id;
@@ -44,6 +45,9 @@ export class ProductEditComponent implements OnInit {
           alert("success updating product ");
         }
       );
+  }
+  hundleClickBack() {
+    this.router.navigate(['/products']);
   }
 
 }
